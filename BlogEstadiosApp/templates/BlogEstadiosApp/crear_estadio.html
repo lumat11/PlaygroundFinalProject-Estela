@@ -1,0 +1,9 @@
+{% extends "BlogEstadiosApp/base.html" %} {% block content %}
+<div class="container">
+  <h1>Crear Estadio</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Crear Estadio</button>
+  </form>
+</div>
+{% endblock %}

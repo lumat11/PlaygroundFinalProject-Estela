@@ -1,0 +1,43 @@
+{% extends "BlogEstadiosApp/base.html" %} {% block content %}
+<style>
+  .image-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right: 20px; /* Ajusta el margen según tu preferencia */
+  }
+
+  .image-circle img {
+    width: 100%;
+    height: auto;
+    border-radius: 50%;
+  }
+</style>
+
+<h1>Lista de Estadios</h1>
+{% for estadio in estadios %}
+<div class="card mb-3">
+  <div class="card-body">
+    <div class="media">
+      {% if estadio.image %}
+      <div class="image-circle">
+        <img
+          src="{{ estadio.image.url }}"
+          alt="estadio Image"
+          class="img-fluid"
+        />
+      </div>
+      {% endif %}
+      <div class="media-body ml-3">
+        <h2 class="card-title">
+          <a href="{% url 'estadio_detail' estadio.id %}">{{ estadio.name }}</a>
+        </h2>
+        <p class="card-text">{{ estadio.apodo }}</p>
+      </div>
+    </div>
+  </div>
+</div>
+{% empty %}
+<div class="alert alert-info" role="alert">No hay estadios disponibles.</div>
+{% endfor %} {% endblock %}

@@ -1,0 +1,43 @@
+{% extends "BlogEstadiosApp/base.html" %} {% block title %}Estadio: - {{
+estadio.name }}{% endblock %} {% block content %}
+<div class="container mt-4">
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ estadio.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted">{{ estadio.apado }}</h6>
+      <p class="card-text">{{ estadio.body }}</p>
+      <p class="card-text">Autor: {{ estadio.author.username }}</p>
+      <p class="card-text">Fecha de publicación: {{ estadio.date }}</p>
+
+      {% if estadio.image %}
+      <img
+        src="{{ estadio.image.url }}"
+        alt="Imagen del estadio"
+        class="img-fluid"
+      />
+      {% endif %}
+    </div>
+    <div class="footer">
+      {% if user.is_authenticated and user == estadio.author %}
+      <a
+        href="{% url 'delete_estadio' estadio.id %}"
+        class="btn btn-danger btn-sm"
+        >Eliminar</a
+      >
+      <a
+        href="{% url 'edit_estadio' estadio.id %}"
+        class="btn btn-primary btn-sm"
+        >Editar</a
+      >
+      {% endif %}
+    </div>
+  </div>
+</div>
+<style>
+  .footer {
+    width: 200px;
+    margin: 20px auto;
+    text-align: center;
+  }
+</style>
+{% endblock %}

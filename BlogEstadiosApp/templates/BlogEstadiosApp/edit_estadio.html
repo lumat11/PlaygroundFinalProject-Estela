@@ -1,0 +1,12 @@
+{% extends "BlogEstadiosApp/base.html" %} {% block content %}
+<div class="container">
+  <h1>Editar Estadio</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Editar</button>
+  </form>
+  <a href="{% url 'estadio_detail' estadio.id %}" class="btn btn-secondary"
+    >Cancelar</a
+  >
+</div>
+{% endblock %}

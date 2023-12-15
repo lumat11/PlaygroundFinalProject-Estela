@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Estadios del Mundo</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <style>
+      html,
+      body {
+          height: 100%;
+      }
+      body {
+          display: flex;
+          flex-direction: column;
+      }
+      .content {
+          flex: 1;
+      }
+      .username-box {
+          display: inline-block;
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          text-align: center;
+          line-height: 30px;
+          font-size: 16px;
+          margin-left: 1rem;
+          background-color: {% if user.is_authenticated %}white{% else %}gray{% endif %};
+          color: {% if user.is_authenticated %}gray{% else %}white{% endif %};
+      }
+      .nav-item a.nav-link.disabled {
+          pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    {% if user.is_authenticated %}
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="{% url 'home' %}">Estadios de mundo</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a
+              class="nav-link {% if not user.is_authenticated %}disabled{% endif %}"
+              href="{% if user.is_authenticated %}{% url 'estadios' %}{% else %}#{% endif %}"
+              >Inicio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link {% if not user.is_authenticated %}disabled{% endif %}"
+              href="{% if user.is_authenticated %}{% url 'about_me' %}{% else %}#{% endif %}"
+              >Acerca de mi</a
+            >
+          </li>
+
+          <li class="nav-item">
+            <a
+              class="nav-link {% if not user.is_authenticated %}disabled{% endif %}"
+              href="{% if user.is_authenticated %}{% url 'crear_estadio' %}{% else %}#{% endif %}"
+              >Crear un nuevo estadio</a
+            >
+          </li>
+          <li class="nav-item">
+            <a
+              class="nav-link {% if not user.is_authenticated %}disabled{% endif %}"
+              href="{% if user.is_authenticated %}{% url 'logout' %}{% else %}#{% endif %}"
+              >Cerrar Sesión</a
+            >
+          </li>
+        </ul>
+      </div>
+      <a
+        class="username-box"
+        href="{% if user.is_authenticated %}{% url 'update_profile' %}{% else %}#{% endif %}"
+      >
+        {% if user.is_authenticated %} {% if user.username %}
+        {{user.username|first|upper}} {% else %} &nbsp; {% endif %} {% else %}
+        &nbsp; {% endif %}
+      </a>
+    </nav>
+    {% endif %}
+    <div class="container mt-4 content">{% block content %} {% endblock %}</div>
+
+    <footer class="bg-dark text-white text-center py-3">
+      &copy; Blog Estadios by Lumat
+    </footer>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>

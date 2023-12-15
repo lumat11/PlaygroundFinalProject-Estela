@@ -1,0 +1,40 @@
+{% extends "BlogEstadiosApp/base.html" %} {% load static %} {% block content %}
+<style>
+  .about-container {
+    text-align: center;
+    margin-top: 50px;
+  }
+
+  .about-image {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  .about-description {
+    margin-top: 20px;
+  }
+</style>
+
+<div class="about-container">
+  <h1>Acerca de mí</h1>
+  <img
+    src="{% if user_profile.avatar %}{{ user_profile.avatar.url }}{% else %}{% static 'images/default_avatar.png' %}{% endif %}"
+    alt="Mi imagen"
+    width="200"
+    height="200"
+    class="about-image"
+  />
+
+  <p class="about-description"></p>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title">{{ user_profile.user.username }}</h5>
+      <p class="card-text">{{ user_profile.description }}</p>
+      <p class="card-text">Correo electrónico: {{ user_profile.user.email }}</p>
+      <p class="card-text">Link Porfolio: {{ user_profile.portfolio_link }}</p>
+    </div>
+  </div>
+</div>
+{% endblock %}
