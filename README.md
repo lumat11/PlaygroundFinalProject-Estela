@@ -20,11 +20,11 @@
 
 10- Si pulsamos en "Cerrar Sesión", nos deslogueará y volverá a la página de "Inicio de sesión".
 
-### Se hizo un video demostrativo, el cual se cargó en GitHub ("Video demostrativo") o se encuentra en el siguiente link:
+### Se hizo un video demostrativo, el cual se cargó en GitHub ("PlaygroundFinalProject+Estela.webm") o se encuentra en el siguiente link:
 
 https://drive.google.com/file/d/1sfirwfrGmG64JgXHDBzhhFFHut0M2B4M/view?usp=drive_link
 
-### Se generó un excel con casos de pruebas, el mismo se cargó en GitHub ("Casos de prueba") encuentra en la siguiente ubicación:
+### Se generó un excel con casos de pruebas, el mismo se cargó en GitHub ("Unit Test.xlsx") encuentra en la siguiente ubicación:
 
 https://docs.google.com/spreadsheets/d/1Ub1-j9kbpqvbWoB1EfPLBqzufOA_p-dH/edit?usp=drive_link&ouid=114423644403094720402&rtpof=true&sd=true
 
